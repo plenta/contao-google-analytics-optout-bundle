@@ -15,7 +15,7 @@ namespace Plenta\GoogleAnalyticsOptout\Classes\Contao;
 use Contao\FrontendTemplate;
 use Contao\Template;
 
-class AddFooterScript
+class ParseTemplateHookListener
 {
     public function addAnalyticsOptoutScript(Template $objTemplate): void
     {
@@ -32,7 +32,7 @@ class AddFooterScript
         $GLOBALS['TL_BODY'][] = $parsedTemplate;
     }
 
-    public function addAnalyticsOptoutScriptHeader(Template $objTemplate)
+    public function addAnalyticsOptoutScriptHeader(Template $objTemplate): void
     {
         if (TL_MODE !== 'FE' || 'fe_' !== substr($objTemplate->getName(), 0, 3)) {
             return;
@@ -42,7 +42,6 @@ class AddFooterScript
 
         $objTemplate = new FrontendTemplate($strTemplate);
         $parsedTemplate = $objTemplate->parse();
-
 
         $GLOBALS['TL_HEAD'][] = $parsedTemplate;
     }

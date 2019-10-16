@@ -16,7 +16,7 @@ use Contao\ContentHyperlink;
 
 class ContentGoogleAnalyticsOptoutButton extends ContentHyperlink
 {
-    protected function compile()
+    protected function compile(): void
     {
         parent::compile();
 
@@ -27,6 +27,6 @@ class ContentGoogleAnalyticsOptoutButton extends ContentHyperlink
         $this->Template->useImage = false;
         $this->Template->attribute = '';
 
-        $this->Template->href = '#';//'javascript:gaOptout()';
+        $this->Template->href = '#'; //'javascript:gaOptout()';
     }
 }
