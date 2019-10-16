@@ -1,0 +1,27 @@
+{
+  "name": "plenta/contao-google-analytics-optout-bundle",
+  "license": "LGPL-3.0-or-later",
+  "type": "contao-module",
+  "description": "Google Analytics Optout Option",
+  "authors": [
+    {
+      "name": "Plenta Software GbR",
+      "homepage": "https://plenta.io"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "contao/core-bundle": "4.4.*"
+  },
+  "config": {
+    "component-dir": "assets"
+  },
+  "extra": {
+    "contao-manager-plugin": "Plenta\\GoogleAnalyticsOptout\\ContaoManager\\Plugin"
+  },
+  "autoload": {
+    "psr-4": {
+      "Plenta\\GoogleAnalyticsOptout\\": "src/Plenta/GoogleAnalyticsOptout"
+    }
+  }
+}

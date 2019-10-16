@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    var disableStr = '';
+
+    if (typeof ga !== 'undefined') {
+        ga(function(tracker) {
+            var gaProperty = tracker.get('trackingId');
+
+            if (gaProperty !== 'UA-XXXXXXX-X') {
+                window.disableStr = 'ga-disable-' + gaProperty;
+                if (document.cookie.indexOf(window.disableStr + '=true') > -1) {
+                    window[window.disableStr] = true;
+                }
+            }
+        });
+    }
+
+    function gaOptout() {
+        if (window.disableStr !== '') {
+            document.cookie = window.disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+            window[window.disableStr] = true;
+            alert('<?= $GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageTrackingdeactivated'] ?>');
+        }
+    }
+</script>
