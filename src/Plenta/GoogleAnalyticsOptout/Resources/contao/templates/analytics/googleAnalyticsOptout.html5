@@ -1,24 +1,48 @@
 <script type="text/javascript">
-    var disableStr = '';
+    let disableStr = '';
 
-    if (typeof ga !== 'undefined') {
-        ga(function(tracker) {
-            var gaProperty = tracker.get('trackingId');
+    class PlentaGoogleAnalyticsOptout
+    {
+        constructor() {
+            if (typeof ga !== 'undefined') {
+                ga(function (tracker) {
+                    let self = this;
+                    let gaProperty = tracker.get('trackingId');
 
-            if (gaProperty !== 'UA-XXXXXXX-X') {
-                window.disableStr = 'ga-disable-' + gaProperty;
-                if (document.cookie.indexOf(window.disableStr + '=true') > -1) {
-                    window[window.disableStr] = true;
-                }
+                    if (gaProperty !== 'UA-XXXXXXX-X') {
+                        window.disableStr = 'ga-disable-' + gaProperty;
+                        window.gaProperty = gaProperty;
+                    }
+                });
+
+                this.bindCLickEvent();
             }
-        });
-    }
 
-    function gaOptout() {
-        if (window.disableStr !== '') {
-            document.cookie = window.disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-            window[window.disableStr] = true;
-            alert('<?= $GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageTrackingdeactivated'] ?>');
+        }
+
+        gaOptout() {
+            if (window.disableStr !== '') {
+                localStorage.setItem('ga-disable', window.gaProperty);
+                window[window.disableStr] = true;
+                alert('<?= $GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageTrackingdeactivated'] ?>');
+            }
+        }
+
+        bindCLickEvent() {
+            let elements = document.querySelectorAll('.ce_plenta_analytics_optout a');
+
+            if (elements.length) {
+                let self = this;
+                Array.prototype.forEach.call(elements, function (el, i) {
+                    el.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        self.gaOptout();
+                    });
+                });
+            }
         }
     }
+
+    let PlentaGoogleAnalyticsOptoutClass = new PlentaGoogleAnalyticsOptout();
+
 </script>

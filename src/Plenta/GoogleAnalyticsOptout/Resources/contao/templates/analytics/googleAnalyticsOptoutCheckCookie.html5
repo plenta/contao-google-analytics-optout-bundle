@@ -1,0 +1,6 @@
+<script>
+    if (localStorage.getItem('ga-disable')) {
+        let disableStr = 'ga-disable-'+localStorage.getItem('ga-disable')
+        window[disableStr] = true;
+    }
+</script>

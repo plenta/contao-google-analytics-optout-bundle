@@ -17,7 +17,7 @@ use Contao\Template;
 
 class AddFooterScript
 {
-    public function addAnalyticsOptoutScript(Template $objTemplate = null): void
+    public function addAnalyticsOptoutScript(Template $objTemplate): void
     {
         $strTemplate = 'googleAnalyticsOptout';
 
@@ -27,8 +27,23 @@ class AddFooterScript
 
         $objTemplate = new FrontendTemplate($strTemplate);
 
-        $strTemplate = $objTemplate->parse();
+        $parsedTemplate = $objTemplate->parse();
 
-        $GLOBALS['TL_BODY'][] = $strTemplate;
+        $GLOBALS['TL_BODY'][] = $parsedTemplate;
+    }
+
+    public function addAnalyticsOptoutScriptHeader(Template $objTemplate)
+    {
+        if (TL_MODE !== 'FE' || 'fe_' !== substr($objTemplate->getName(), 0, 3)) {
+            return;
+        }
+
+        $strTemplate = 'googleAnalyticsOptoutCheckCookie';
+
+        $objTemplate = new FrontendTemplate($strTemplate);
+        $parsedTemplate = $objTemplate->parse();
+
+
+        $GLOBALS['TL_HEAD'][] = $parsedTemplate;
     }
 }
