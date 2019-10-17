@@ -24,7 +24,7 @@
             if (window.disableStr !== '') {
                 localStorage.setItem('ga-disable', window.gaProperty);
                 window[window.disableStr] = true;
-                alert('<?= $GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageTrackingdeactivated'] ?>');
+                alert('<?= $GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageTrackingDeactivated'] ?>');
             }
         }
 

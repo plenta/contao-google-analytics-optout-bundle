@@ -12,6 +12,6 @@ declare(strict_types=1);
 
 $GLOBALS['TL_LANG']['CTE']['plentaAnalytics'] = 'Analytics';
 $GLOBALS['TL_LANG']['CTE']['plenta_analytics_optout'][0] = 'Google Analytics Optout';
-$GLOBALS['TL_LANG']['CTE']['plenta_analytics_optout'][1] = 'Erzeugt ein Google Analytics Optout Link.';
+$GLOBALS['TL_LANG']['CTE']['plenta_analytics_optout'][1] = 'Generates a Google Analytics optout link.';
 
-$GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageTrackingDeactivated'] = 'Das Tracking durch Google Analytics wurde in Ihrem Browser für diese Website deaktiviert.';
+$GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageTrackingDeactivated'] = 'The Google Analytics tracking has been disabled for this browser on this website.';
