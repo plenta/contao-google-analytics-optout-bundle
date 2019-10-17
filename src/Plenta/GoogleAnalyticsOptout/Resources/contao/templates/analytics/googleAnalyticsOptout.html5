@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script>
     let disableStr = '';
 
     class PlentaGoogleAnalyticsOptout
@@ -44,5 +44,4 @@
     }
 
     let PlentaGoogleAnalyticsOptoutClass = new PlentaGoogleAnalyticsOptout();
-
 </script>

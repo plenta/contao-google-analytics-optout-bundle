@@ -15,7 +15,7 @@ use Plenta\GoogleAnalyticsOptout\Classes\Contao\Elements\ContentGoogleAnalyticsO
 /*
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['parseTemplate'][] = ['Plenta\GoogleAnalyticsOptout\Classes\Contao\ParseTemplateHookListener', 'addAnalyticsOptoutScriptHeader'];
-$GLOBALS['TL_HOOKS']['parseTemplate'][] = ['Plenta\GoogleAnalyticsOptout\Classes\Contao\ParseTemplateHookListener', 'addAnalyticsOptoutScript'];
+$GLOBALS['TL_HOOKS']['generatePage'][] = ['Plenta\GoogleAnalyticsOptout\Classes\Contao\ParseTemplateHookListener', 'addAnalyticsOptoutScriptHeader'];
+$GLOBALS['TL_HOOKS']['generatePage'][] = ['Plenta\GoogleAnalyticsOptout\Classes\Contao\ParseTemplateHookListener', 'addAnalyticsOptoutScript'];
 
 $GLOBALS['TL_CTE']['plentaAnalytics']['plenta_analytics_optout'] = ContentGoogleAnalyticsOptoutButton::class;

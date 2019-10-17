@@ -13,17 +13,23 @@ declare(strict_types=1);
 namespace Plenta\GoogleAnalyticsOptout\Classes\Contao;
 
 use Contao\FrontendTemplate;
-use Contao\Template;
+use Contao\LayoutModel;
+use Contao\PageModel;
+use Contao\PageRegular;
 
 class ParseTemplateHookListener
 {
-    public function addAnalyticsOptoutScript(Template $objTemplate): void
-    {
+    /**
+     * @param PageModel   $objPage
+     * @param LayoutModel $objLayout
+     * @param PageRegular $objPageRegular
+     */
+    public function addAnalyticsOptoutScript(
+        PageModel $objPage,
+        LayoutModel $objLayout,
+        PageRegular $objPageRegular
+    ): void {
         $strTemplate = 'googleAnalyticsOptout';
-
-        if (TL_MODE !== 'FE' || 'fe_' !== substr($objTemplate->getName(), 0, 3)) {
-            return;
-        }
 
         $objTemplate = new FrontendTemplate($strTemplate);
 
@@ -32,12 +38,16 @@ class ParseTemplateHookListener
         $GLOBALS['TL_BODY'][] = $parsedTemplate;
     }
 
-    public function addAnalyticsOptoutScriptHeader(Template $objTemplate): void
-    {
-        if (TL_MODE !== 'FE' || 'fe_' !== substr($objTemplate->getName(), 0, 3)) {
-            return;
-        }
-
+    /**
+     * @param PageModel   $objPage
+     * @param LayoutModel $objLayout
+     * @param PageRegular $objPageRegular
+     */
+    public function addAnalyticsOptoutScriptHeader(
+        PageModel $objPage,
+        LayoutModel $objLayout,
+        PageRegular $objPageRegular
+    ): void {
         $strTemplate = 'googleAnalyticsOptoutCheckCookie';
 
         $objTemplate = new FrontendTemplate($strTemplate);
