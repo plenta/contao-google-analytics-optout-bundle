@@ -29,3 +29,5 @@ gulp.config.js
 
 # Contao Manager
 /contao-manager/
+
+composer.lock
