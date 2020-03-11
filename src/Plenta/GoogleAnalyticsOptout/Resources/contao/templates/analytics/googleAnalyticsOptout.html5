@@ -5,15 +5,17 @@
     {
         constructor() {
             if (typeof ga !== 'undefined') {
-                ga(function (tracker) {
-                    let self = this;
-                    let gaProperty = tracker.get('trackingId');
+                let self = this;
+                let gaProperty = 'UA-XXXXXXX-X';
 
-                    if (gaProperty !== 'UA-XXXXXXX-X') {
-                        window.disableStr = 'ga-disable-' + gaProperty;
-                        window.gaProperty = gaProperty;
-                    }
+                ga.getAll().forEach( (tracker) => {
+                    gaProperty = tracker.get('trackingId');
                 });
+
+                if (gaProperty !== 'UA-XXXXXXX-X') {
+                    window.disableStr = 'ga-disable-' + gaProperty;
+                    window.gaProperty = gaProperty;
+                }
 
                 this.bindCLickEvent();
             }
@@ -43,5 +45,7 @@
         }
     }
 
-    let PlentaGoogleAnalyticsOptoutClass = new PlentaGoogleAnalyticsOptout();
+    window.addEventListener('load', (event) => {
+        let PlentaGoogleAnalyticsOptoutClass = new PlentaGoogleAnalyticsOptout();
+    });
 </script>
