@@ -15,3 +15,5 @@ $GLOBALS['TL_LANG']['CTE']['plenta_analytics_optout'][0] = 'Google Analytics Opt
 $GLOBALS['TL_LANG']['CTE']['plenta_analytics_optout'][1] = 'Generates a Google Analytics optout link.';
 
 $GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageTrackingDeactivated'] = 'The Google Analytics tracking has been disabled for this browser on this website.';
+$GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageAnalyticsNotFound'] = 'Could not find Google Analytics on this website.';
+

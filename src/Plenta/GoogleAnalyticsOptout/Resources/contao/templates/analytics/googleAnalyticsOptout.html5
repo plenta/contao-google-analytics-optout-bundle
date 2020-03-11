@@ -16,9 +16,9 @@
                     window.disableStr = 'ga-disable-' + gaProperty;
                     window.gaProperty = gaProperty;
                 }
-
-                this.bindCLickEvent();
             }
+
+            this.bindCLickEvent();
 
         }
 
@@ -35,10 +35,16 @@
 
             if (elements.length) {
                 let self = this;
+
                 Array.prototype.forEach.call(elements, function (el, i) {
                     el.addEventListener('click', function (event) {
                         event.preventDefault();
-                        self.gaOptout();
+
+                        if (window.disableStr !== 'undefined') {
+                            self.gaOptout();
+                        } else {
+                            alert('<?= $GLOBALS['TL_LANG']['PLENTA']['GoogleAnalyticsOptout']['messageAnalyticsNotFound'] ?>');
+                        }
                     });
                 });
             }
