@@ -1,0 +1,24 @@
+<?php
+// To use this script, please fill in your Google Analytics ID below
+$GoogleAnalyticsId = 'UA-XXXXX-X';
+
+// DO NOT EDIT ANYTHING BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING!
+if ('UA-XXXXX-X' != $GoogleAnalyticsId && !BE_USER_LOGGED_IN && !$this->hasAuthenticatedBackendUser()): ?>
+    <script>
+        if ('true' === localStorage.getItem('plentaAnalyticsOptIn') || '1' === localStorage.getItem('COOKIEBAR_ANALYTICS') {
+            var gascript = document.createElement('script');
+            gascript.async = true;
+            gascript.src = 'https://www.googletagmanager.com/gtag/js?id=<?= $GoogleAnalyticsId ?>';
+            document.getElementsByTagName('head')[0].appendChild(gascript, document.getElementsByTagName('head')[0]);
+
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', '<?= $GoogleAnalyticsId ?>', { 'anonymize_ip': true });
+        }
+    </script>
+<?php endif; ?>
